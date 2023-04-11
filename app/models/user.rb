@@ -5,4 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :events, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.last_name = "ゲスト"
+      user.first_name = "ログイン"
+      user.last_name_kana = "ゲスト"
+      user.first_name_kana = "ログイン"
+      user.telephone_number = "00000000000"
+    end
+  end  
 end

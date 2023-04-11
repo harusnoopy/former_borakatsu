@@ -1,27 +1,20 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'organizers/show'
+  
+  root to: "public/homes#top"
+
+  scope module: :public do
+    get 'about' => 'homes#about'
+    resource :favorites, only: [:create, :destroy]
+    resources :organizers, only: [:show]
+    resources :participations, only: [:new, :create, :index, :show]
+    get 'participations/thanx' => 'participations#thanx', as: 'thanx'
+    post 'participations/confirmation' => 'participations#confirmation', as: 'confirmation'
+    resource :user, only: [:show, :edit, :update]
+    get 'user/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch 'user/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+    resources :events, only: [:index, :show]
   end
-  namespace :public do
-    get 'participations/new'
-    get 'participations/confirmation'
-    get 'participations/thanx'
-    get 'participations/index'
-    get 'participations/show'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/unsubscribe'
-  end
-  namespace :public do
-    get 'events/index'
-    get 'events/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  
   namespace :admin do
     get '' => 'homes#top'
     resources :participations, only: [:index]
@@ -29,13 +22,18 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :show, :edit, :update]
     resources :organizers, except: [:destroy]
   end
-  
-devise_for :users, controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
 
-devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in', as: 'guest_sign_in'
+  end  
+  
+  devise_for :users, controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
