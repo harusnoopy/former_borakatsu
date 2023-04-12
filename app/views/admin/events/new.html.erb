@@ -1,2 +1,54 @@
-<h1>Admin::Events#new</h1>
-<p>Find me in app/views/admin/events/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">イベント新規登録</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% if @event.errors.any? %>
+        <%= @event.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_with model: @event, url: admin_events_path do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td><%= f.label :name, "イベント名" %></td>
+              <td><%= f.text_field :name, autocomplete: "name", placeholder: "イベント名", size: "60" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :introduction, "概要" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここにイベント概要を記述します", size: "63×70" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :date, "日付" %></td>
+              <td><%= f.date_field :date %>～<%= f.date_field :date %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :schedule, "スケジュール" %></td>
+              <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", size: "63" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :number_of_people, "募集予定人数" %></td>
+              <td><%= f.number_field :number_of_people, placeholder: "10", min: "1" %>人</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.submit "新規登録", class: "btn btn-success my-3 px-5" %>
+    </div>
+  <% end %>
+</div>

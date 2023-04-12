@@ -1,2 +1,62 @@
-<h1>Admin::Organizers#new</h1>
-<p>Find me in app/views/admin/organizers/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">主催者新規登録</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% if @organizer.errors.any? %>
+        <%= @organizer.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @organizer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_with model: @organizer, url: admin_organizers_path do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td><%= f.label :name, "主催者名" %></td>
+              <td><%= f.text_field :name, autocomplete: "name", placeholder: "主催者名", size: "60" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :introduction, "概要" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに概要を記述します", size: "63×70" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :postal_code, "郵便番号" %></td>
+              <td><%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", size: "20" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address, "住所" %></td>
+              <td><%= f.text_field :address, autocomplete: "address", placeholder: "新潟県新潟市中央区0-0", size: "60" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :telephone_number, "電話番号" %></td>
+              <td><%= f.telephone_field :telephone_number, autocomplete: "telephone_number", placeholder: "00000000000", size: "60" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@examle.com", size: "60" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :homepage, "ホームページ" %></td>
+              <td><%= f.url_field :homepage, autocomplete: "homepage", placeholder: "http://aaaaa.ne.jp", size: "60" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.submit "新規登録", class: "btn btn-success my-3 px-5" %>
+    </div>
+  <% end %>
+</div>
