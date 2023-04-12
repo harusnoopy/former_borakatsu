@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1 d-flex justify-content-between">
+      <p><span class="bg-light font-weight-bold px-3">イベント一覧</span></p>
+      <%= button_to new_admin_event_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+      <%= button_to new_admin_event_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
+        こちら
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">イベントID</th>
+            <th scope="col">イベント名</th>
+            <th scope="col">日付</th>
+            <th scope="col">応募人数</th>
+            <th scope="col">募集ステータス</th>
+          </tr>
+        </thead>
+        <% @events.each do |event| %>
+          <tbody>
+            <tr>
+              <th scope="row"><%= event.id %></th>
+              <td>
+                <%= link_to admin_event_path(event.id) do %>
+                  <%= event.name %>
+                <% end %>
+              </td>
+              <td><%= event.date %></td>
+              <td><%= event.date %></td>
+              <td><%= event.date %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <%= paginate @events %>
+  </div>
+</div>

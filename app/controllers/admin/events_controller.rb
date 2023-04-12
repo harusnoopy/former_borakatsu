@@ -1,4 +1,8 @@
 class Admin::EventsController < ApplicationController
+  def index
+    @events = Event.page(params[:page])
+  end
+  
   def new
   end
 

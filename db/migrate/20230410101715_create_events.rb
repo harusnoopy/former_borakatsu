@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       
       t.string :name, null: false
       t.text :introduction, null: false
+      t.string :date, null: false
       t.text :schedule, null: false
       t.integer :number_of_people, null: false
       t.boolean :is_recruiting, null: false, default: true
