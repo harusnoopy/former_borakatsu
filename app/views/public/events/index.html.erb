@@ -1,2 +1,62 @@
-<h1>Public::Events#index</h1>
-<p>Find me in app/views/public/events/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <h5 class="my-4"><span class="bg-light font-weight-bold px-3">イベント一覧</span></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">イベント名</th>
+            <th scope="col">日付</th>
+            <th scope="col">主催者</th>
+            <th scope="col">募集ステータス</th>
+            <th scope="col">いいね</th>
+          </tr>
+        </thead>
+        <% @events.each do |event| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to event_path(event.id) do %>
+                  <%= event.name %>
+                <% end %>
+              </td>
+              <td><%= event.date.strftime('%Y/%m/%d') %></td>
+              <td><%= event.organizer.name %></td>
+              <td>
+                <% if event.is_recruiting == true %>
+                  <p class="text-success m-0"><strong>募集中</strong></p>
+                <% else %>
+                  <p class="text-secondary m-0">締切</p>
+                <% end %>
+              </td>
+              <td>
+                <% if event.favorited_by?(current_user) %>
+                  <p>
+                    <%= link_to event_favorites_path(event.id), method: :delete do %>
+                      <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span>
+                    <% end %>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to event_favorites_path(event.id), method: :post do %>
+                      <span style="color: black"><i class="far fa-heart"></i> <%= event.favorites.count %></span>
+                    <% end %>
+                  </p>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <%= paginate @events %>
+  </div>
+</div>

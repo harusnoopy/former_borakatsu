@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get 'about' => 'homes#about'
-    resource :favorites, only: [:create, :destroy]
-    get 'favorites' => 'favorites#index'
     resources :organizers, only: [:show]
     resources :participations, only: [:new, :create, :index, :show]
     get 'participations/thanx' => 'participations#thanx', as: 'thanx'
@@ -13,7 +11,10 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :edit, :update]
     get 'user/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'user/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    resources :events, only: [:index, :show]
+    resources :events, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    get 'favorites' => 'favorites#index'
   end
 
   namespace :admin do
