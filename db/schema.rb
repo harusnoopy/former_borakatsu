@@ -27,17 +27,23 @@ ActiveRecord::Schema.define(version: 2023_04_10_102014) do
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
-    t.string "date", null: false
+    t.date "date", null: false
     t.text "schedule", null: false
     t.integer "number_of_people", null: false
     t.boolean "is_recruiting", default: true, null: false
+    t.integer "organizer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_favorites_on_event_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "organizers", force: :cascade do |t|
@@ -54,8 +60,12 @@ ActiveRecord::Schema.define(version: 2023_04_10_102014) do
 
   create_table "participations", force: :cascade do |t|
     t.boolean "is_applying", default: true, null: false
+    t.integer "user_id"
+    t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,4 +86,9 @@ ActiveRecord::Schema.define(version: 2023_04_10_102014) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "organizers"
+  add_foreign_key "favorites", "events"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
 end

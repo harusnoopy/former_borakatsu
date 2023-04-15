@@ -1,2 +1,63 @@
-<h1>Admin::Events#show</h1>
-<p>Find me in app/views/admin/events/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">イベント詳細</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col offset-md-1">
+      <table>
+        <tr>
+          <td class="pt-3 pr-5">イベント名</td>
+          <td class="pt-3"><%= @event.name %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">主催者</td>
+          <td class="pt-3">
+            <%= link_to admin_organizer_path(@event.organizer.id) do %>
+              <%= @event.organizer.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">イベント詳細</td>
+          <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br))%></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">日付</td>
+          <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">スケジュール</td>
+          <td class="pt-3"><%=safe_join(@event.schedule.split("\n"),tag(:br))%></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">募集人数</td>
+          <td class="pt-3"><%= @event.number_of_people %>名</td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">応募人数</td>
+          <td class="pt-3">
+            <%= link_to admin_participations_path do %>
+              <%= @event.participations.count %>名
+            <% end %>
+            </td>
+        </tr>
+          <td class="pt-3 pr-5">募集ステータス</td>
+          <td class="pt-3">
+            <% if @event.is_recruiting == true %>
+              <p class="text-success m-0"><strong>募集中</strong></p>
+            <% else %>
+              <p class="text-secondary m-0">締切</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集する", edit_admin_event_path(@event.id), class: "btn btn-success my-3 px-5" %>
+  </div>
+</div>
+

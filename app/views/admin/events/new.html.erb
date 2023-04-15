@@ -24,6 +24,10 @@
         <table class="table table-borderless">
           <tbody>
             <tr>
+              <td><%= f.label :organizer_id, "主催者" %></td>
+              <td><%= f.collection_select :organizer_id, Organizer.all, :id, :name %></td>
+            </tr>
+            <tr>
               <td><%= f.label :name, "イベント名" %></td>
               <td><%= f.text_field :name, autocomplete: "name", placeholder: "イベント名", size: "60" %></td>
             </tr>
@@ -33,7 +37,7 @@
             </tr>
             <tr>
               <td><%= f.label :date, "日付" %></td>
-              <td><%= f.date_field :date %>～<%= f.date_field :date %></td>
+              <td><%= f.date_field :date %></td>
             </tr>
             <tr>
               <td><%= f.label :schedule, "スケジュール" %></td>

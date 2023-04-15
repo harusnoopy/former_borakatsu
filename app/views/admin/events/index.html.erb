@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 offset-md-1 d-flex justify-content-between">
+    <div class="col-md-10 offset-md-1 d-flex justify-content-between">
       <p><span class="bg-light font-weight-bold px-3">イベント一覧</span></p>
       <%= button_to new_admin_event_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
         <i class="fas fa-plus"></i>
@@ -9,7 +9,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-10 offset-md-1">
       <table class="table table-borderless">
         <thead class="thead-light">
           <tr>
@@ -23,15 +23,21 @@
         <% @events.each do |event| %>
           <tbody>
             <tr>
-              <th scope="row"><%= event.id %></th>
+              <td scope="row"><%= event.id %></td>
               <td>
                 <%= link_to admin_event_path(event.id) do %>
                   <%= event.name %>
                 <% end %>
               </td>
-              <td><%= event.date %></td>
-              <td><%= event.date %></td>
-              <td><%= event.date %></td>
+              <td><%= event.date.strftime('%Y/%m/%d') %></td>
+              <td><%= event.participations.count %></td>
+              <td>
+                <% if event.is_recruiting == true %>
+                  <p class="text-success m-0"><strong>募集中</strong></p>
+                <% else %>
+                  <p class="text-secondary m-0">締切</p>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         <% end %>

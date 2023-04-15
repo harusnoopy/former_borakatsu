@@ -17,12 +17,20 @@ class Admin::OrganizersController < ApplicationController
   end
 
   def show
+    @organizer = Organizer.find(params[:id])
   end
 
   def edit
+    @organizer = Organizer.find(params[:id])
   end
 
   def update
+    @organizer = Organizer.find(params[:id])
+    if @organizer.update(organizer_params)
+      redirect_to admin_organizer_path(@organizer.id)
+    else
+      render :edit
+    end
   end
 
   private
