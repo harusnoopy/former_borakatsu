@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :organizers, only: [:show]
     resources :participations, only: [:new, :create, :index, :show]
     get 'participations/thanx' => 'participations#thanx', as: 'thanx'
-    post 'participations/confirmation' => 'participations#confirmation', as: 'confirmation'
+    post 'participations/confirm' => 'participations#confirm', as: 'confirm'
     resource :user, only: [:show, :edit, :update]
     get 'user/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'user/withdrawal' => 'users#withdrawal', as: 'withdrawal'

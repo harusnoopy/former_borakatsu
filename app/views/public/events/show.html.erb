@@ -1,2 +1,71 @@
-<h1>Public::Events#show</h1>
-<p>Find me in app/views/public/events/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">イベント詳細</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col offset-md-1">
+      <table>
+        <tr>
+          <td class="pt-3 pr-5">イベント名</td>
+          <td class="pt-3"><%= @event.name %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">主催者</td>
+          <td class="pt-3">
+            <%= link_to organizer_path(@event.organizer.id) do %>
+              <%= @event.organizer.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">イベント詳細</td>
+          <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br)) %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">日付</td>
+          <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">スケジュール</td>
+          <td class="pt-3"><%=safe_join(@event.schedule.split("\n"),tag(:br)) %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pr-5">募集人数</td>
+          <td class="pt-3"><%= @event.number_of_people %>名</td>
+        </tr>
+          <td class="pt-3 pr-5">募集ステータス</td>
+          <td class="pt-3">
+            <% if @event.is_recruiting == true %>
+              <p class="text-success m-0"><strong>募集中</strong></p>
+            <% else %>
+              <p class="text-secondary m-0">締切</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= hidden_field_tag(:event_id, params[:event_id]) %>
+    <%= hidden_field_tag(:name, @event.name) %>
+    <%= hidden_field_tag(:organizer, @event.organizer.name) %>
+    <%= hidden_field_tag(:place, @event.organizer.address) %>
+    <%= hidden_field_tag(:date, @event.date) %>
+    <%= hidden_field_tag(:schedule, @event.schedule) %>
+    <%= link_to "応募する", new_participation_path, class: "btn btn-success my-3 px-5" %>
+
+    <%= form_with model: @participation, url: confirm_path do |f| %>
+      <div class="form-inline">
+        <%= f.hidden_field :event_id, :value => @event.id %>
+        <%= f.submit "応募する", class: "btn btn-success px-3 mx-3" %>
+      </div>
+    <% end %>
+
+
+
+  </div>
+</div>
+

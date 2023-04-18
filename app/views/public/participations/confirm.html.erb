@@ -8,23 +8,23 @@
       <table>
         <tr>
           <td class="pt-3 pr-5">イベント名</td>
-          <td class="pt-3"><%= @event_name %></td>
+          <td class="pt-3"><%= @event.name %></td>
         </tr>
         <tr>
           <td class="pt-3 pr-5">会場</td>
-          <td class="pt-3"><%= @organizer %></td>
+          <td class="pt-3"><%= @event.organizer.name %></td>
         </tr>
         <tr>
           <td class="pt-3 pr-5">住所</td>
-          <td class="pt-3"><%= @event_place %></td>
+          <td class="pt-3"><%= @event.organizer.address %></td>
         </tr>
         <tr>
           <td class="pt-3 pr-5">日付</td>
-          <td class="pt-3"><%= @event_date %></td>
+          <td class="pt-3"><%= @event.date %></td>
         </tr>
         <tr>
           <td class="pt-3 pr-5">スケジュール</td>
-          <td class="pt-3"><%= @event_schedule %></td>
+          <td class="pt-3"><%= @event.schedule %></td>
         </tr>
       </table>
     </div>
