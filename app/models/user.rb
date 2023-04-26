@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :events, dependent: :destroy
+  has_many :participations,  dependent: :destroy
+  has_many :participation_events, through: :participations, source: :event
   has_many :favorites, dependent: :destroy
 
   def self.guest

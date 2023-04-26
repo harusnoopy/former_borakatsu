@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'about' => 'homes#about'
     resources :organizers, only: [:show]
-    resources :participations, only: [:new, :create, :index, :show]
+    resources :participations, only: [:create, :index, :show]
     get 'participations/thanx' => 'participations#thanx', as: 'thanx'
     post 'participations/confirm' => 'participations#confirm', as: 'confirm'
     resource :user, only: [:show, :edit, :update]

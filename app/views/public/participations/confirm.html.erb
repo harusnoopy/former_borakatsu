@@ -7,24 +7,24 @@
     <div class="col offset-md-1">
       <table>
         <tr>
-          <td class="pt-3 pr-5">イベント名</td>
+          <td class="pt-3">イベント名</td>
           <td class="pt-3"><%= @event.name %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">会場</td>
+          <td class="pt-3">会場</td>
           <td class="pt-3"><%= @event.organizer.name %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">住所</td>
+          <td class="pt-3">住所</td>
           <td class="pt-3"><%= @event.organizer.address %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">日付</td>
-          <td class="pt-3"><%= @event.date %></td>
+          <td class="pt-3">開催日</td>
+          <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">スケジュール</td>
-          <td class="pt-3"><%= @event.schedule %></td>
+          <td class="pt-3 pr-5">スケジュール　</td>
+          <td class="pt-3"><%= safe_join(@event.schedule.split("\n"),tag(:br)) %></td>
         </tr>
       </table>
     </div>
@@ -38,27 +38,30 @@
     <div class="col offset-md-1">
       <table>
         <tr>
-          <td scope="row" class="table-active col-md-3 col-sm-4">氏名</td>
-          <td><%= @participation.user.last_name %>　<%= @participation.user.first_name %></td>
+          <td scope="row" class="pt-3">氏名</td>
+          <td class="pt-3"><%= @participation.user.last_name %>　<%= @participation.user.first_name %></td>
         </tr>
         <tr>
-          <td class="table-active">カナ</td>
-          <td><%= @participation.user.last_name_kana %>　<%= @participation.user.first_name_kana %></td>
+          <td class="pt-3">カナ</td>
+          <td class="pt-3"><%= @participation.user.last_name_kana %>　<%= @participation.user.first_name_kana %></td>
         </tr>
         <tr>
-          <td class="table-active">電話番号</td>
-          <td><%= @participation.user.telephone_number %></td>
+          <td class="pt-3">電話番号</td>
+          <td class="pt-3"><%= @participation.user.telephone_number %></td>
         </tr>
         <tr>
-          <td class="table-active">メールアドレス</td>
-          <td><%= @participation.user.email %></td>
+          <td class="pt-3 pr-5">メールアドレス</td>
+          <td class="pt-3"><%= @participation.user.email %></td>
         </tr>
       </table>
     </div>
   </div>
 
   <div class="row d-flex justify-content-center">
-    <%= form_with model: @participation, url: confirm_path do |f| %>
+    <%= form_with model: @participation, url: participations_path do |f| %>
+      <%= f.hidden_field :event_id, :value => @event.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :is_applying, :value => true %>
       <%= f.submit "応募を確定する", class: "btn btn-success font-weight-bold px-4 my-3" %>
     <% end %>
   </div>

@@ -1,15 +1,4 @@
 class Public::ParticipationsController < ApplicationController
-  def new
-    @participation = Participation.new
-    @event = params[:event_id]
-    @event_name = params[:event][:name]
-    @organizer = params[:organizer]
-    @event_place = params[:place]
-    @event_date = params[:date]
-    @event_schedule = params[:schedule]
-    @participation.user_id = current_user.id
-  end
-
   def confirm
     @participation = Participation.new(participation_params)
     @event = Event.find(params[:participation][:event_id])
@@ -20,7 +9,7 @@ class Public::ParticipationsController < ApplicationController
     participation = Participation.new(participation_params)
     participation.user_id = current_user.id
     if participation.save
-      redirect_to thanx_path
+      redirect_to participation_path(participation.id), notice: 'ご応募ありがとうございます！'
     else
       render :confirm
     end
@@ -30,9 +19,11 @@ class Public::ParticipationsController < ApplicationController
   end
 
   def index
+    @participations = Participation.page(params[:page])
   end
 
   def show
+    @participation = Participation.find(params[:id])
   end
 
   private

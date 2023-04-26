@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2023_04_10_102014) do
   end
 
   create_table "participations", force: :cascade do |t|
-    t.boolean "is_applying", default: true, null: false
+    t.boolean "is_applying", default: false, null: false
     t.integer "user_id"
     t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
