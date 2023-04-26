@@ -30,7 +30,11 @@
                 <% end %>
               </td>
               <td><%= event.date.strftime('%Y/%m/%d') %></td>
-              <td><%= event.participations.count %></td>
+              <td>
+                <%= link_to admin_participations_path do %>
+                  <%= event.participations.count %>
+                <% end %>
+                </td>
               <td>
                 <% if event.is_recruiting == true %>
                   <p class="text-success m-0"><strong>募集中</strong></p>

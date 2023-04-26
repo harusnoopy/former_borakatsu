@@ -22,7 +22,7 @@
               <td scope="row"><%= user.id %></td>
               <td>
                 <%= link_to admin_user_path(user.id) do %>
-                  <%= user.last_name %><%= user.first_name %>
+                  <%= user.last_name %> <%= user.first_name %>
                 <% end %>
               </td>
               <td><%= user.email %></td>
@@ -39,7 +39,7 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row justify-content-center mb-3">
     <%= paginate @users %>
   </div>

@@ -40,6 +40,7 @@
           <td class="pt-3 pr-5">応募人数</td>
           <td class="pt-3">
             <%= link_to admin_participations_path do %>
+              <%= hidden_field_tag :event_id, @event_id %>
               <%= @event.participations.count %>名
             <% end %>
           </td>

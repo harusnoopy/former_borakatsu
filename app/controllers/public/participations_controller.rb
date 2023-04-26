@@ -19,7 +19,7 @@ class Public::ParticipationsController < ApplicationController
   end
 
   def index
-    @participations = Participation.page(params[:page])
+    @participations = Participation.page(params[:page]).order(created_at: :desc)
   end
 
   def show
