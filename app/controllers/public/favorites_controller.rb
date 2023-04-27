@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     favorite = Favorite.new(user_id: current_user.id, event_id: params[:event_id])
     favorite.save

@@ -1,4 +1,6 @@
 class Admin::OrganizersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @organizers = Organizer.page(params[:page])
   end

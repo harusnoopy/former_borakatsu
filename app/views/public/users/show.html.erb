@@ -6,11 +6,11 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8 d-flex align-items-start">
+    <div class="col-md-10 offset-md-2 d-flex align-items-start">
       <h5 class="mb-3 mt-1 mr-4"><strong>登録情報</strong></h5>
       <%= link_to "編集する", edit_user_path, class: "btn btn-success mb-3 px-4 py-1" %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7 offset-md-2">
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -26,15 +26,15 @@
             <td><%= @user.telephone_number %></td>
           </tr>
           <tr>
-            <th class="table-active">メールアドレス</th>
+            <th class="table-active pr-2">メールアドレス</th>
             <td><%= @user.email %></td>
           </tr>
         </tbody>
       </table>
-      <div class="col-md-8 d-flex align-items-start p-0">
-        <h5 class="mb-3 mt-1 mr-4"><strong>応募履歴</strong></h5>
-        <%= link_to "一覧を見る", participations_path, class: "btn btn-primary mb-3 px-4 py-1" %>
-      </div>
+    </div>
+    <div class="col-md-10 offset-md-2 d-flex align-items-start">
+      <h5 class="mb-3 mt-1 mr-4"><strong>応募履歴</strong></h5>
+      <%= link_to "一覧を見る", participations_path, class: "btn btn-primary mb-3 px-4 py-1" %>
     </div>
   </div>
 </div>

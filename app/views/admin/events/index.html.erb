@@ -17,7 +17,8 @@
             <th scope="col">イベント名</th>
             <th scope="col">開催日</th>
             <th scope="col">応募人数</th>
-            <th scope="col">募集ステータス</th>
+            <th scope="col">募集状況</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <% @events.each do |event| %>
@@ -32,7 +33,7 @@
               <td><%= event.date.strftime('%Y/%m/%d') %></td>
               <td>
                 <%= link_to admin_event_participations_path(event.id) do %>
-                  <%= event.participations.count %>
+                  <%= event.participations.count %> 名
                 <% end %>
                 </td>
               <td>
@@ -42,6 +43,7 @@
                   <p class="text-secondary m-0">締切</p>
                 <% end %>
               </td>
+              <td><span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span></td>
             </tr>
           </tbody>
         <% end %>

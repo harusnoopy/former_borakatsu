@@ -1,4 +1,6 @@
 class Public::ParticipationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def confirm
     @participation = Participation.new(participation_params)
     @event = Event.find(params[:participation][:event_id])
@@ -15,11 +17,8 @@ class Public::ParticipationsController < ApplicationController
     end
   end
 
-  def thanx
-  end
-
   def index
-    @participations = Participation.page(params[:page]).order(created_at: :desc)
+    @participations = Participation.page(params[:page])
   end
 
   def show

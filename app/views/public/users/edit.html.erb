@@ -5,9 +5,9 @@
     </div>
   </div>
 
-  <div class="row">
-    <%= form_with model: @user, url: user_path do |f| %>
-      <div class="col offset-md-1">
+  <%= form_with model: @user, url: user_path do |f| %>
+    <div class="row">
+      <div class="col-md-8 offset-md-4">
         <% if @user.errors.any? %>
           <%= @user.errors.count %>件のエラーが発生しました
           <ul>
@@ -16,7 +16,11 @@
             <% end %>
           </ul>
         <% end %>
-
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-7 offset-md-2">
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -36,16 +40,16 @@
             </tr>
             <tr>
               <td scope="row">メールアドレス</td>
-              <td><%= f.email_field :email, autocomplete: "email" %></td>
-              <td></td>
+              <td colspan="2"><%= f.email_field :email, autocomplete: "email", size: "53" %></td>
             </tr>
           </tbody>
         </table>
-        <div class="col row justify-content-center">
-          <%= f.submit "編集内容を保存", class: "btn btn-success my-3 px-5" %>
-          <%= link_to "退会する",  unsubscribe_path, class: "btn btn-danger my-3 ml-5 px-4" %>
-        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <%= f.submit "編集内容を保存", class: "btn btn-success my-3 px-5" %>
+      <%= link_to "退会する",  unsubscribe_path, class: "btn btn-danger my-3 ml-5 px-4" %>
+    </div>
+  <% end %>
 </div>

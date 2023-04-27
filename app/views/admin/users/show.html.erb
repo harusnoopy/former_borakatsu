@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-md-9 offset-md-1">
       <p><span class="bg-light font-weight-bold px-3">
-        <%= @user.last_name %><%= @user.first_name %>さんの会員詳細
+        <%= @user.last_name %> <%= @user.first_name %> さんの会員詳細
       </span></p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-9 offset-md-1">
+    <div class="col-md-8 offset-md-3">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -32,7 +32,7 @@
             <td><%= @user.email %></td>
           </tr>
           <tr>
-            <td scope="row">会員ステータス</td>
+            <td scope="row">ステータス</td>
             <td>
               <% if @user.is_deleted == false %>
                 <p class="text-success m-0"><strong>有効</strong></p>
@@ -43,9 +43,12 @@
           </tr>
         </tbody>
       </table>
-      <div class="col row justify-content-center">
-        <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success my-3 px-4" %>
-      </div>
     </div>
   </div>
+    
+  <% if @user.is_deleted == false %>
+    <div class="row justify-content-center">
+      <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success my-3 px-4" %>
+    </div>
+  <% end %>
 </div>
