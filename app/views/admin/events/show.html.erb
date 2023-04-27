@@ -25,7 +25,7 @@
           <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br))%></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">日付</td>
+          <td class="pt-3 pr-5">開催日</td>
           <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
@@ -39,8 +39,7 @@
         <tr>
           <td class="pt-3 pr-5">応募人数</td>
           <td class="pt-3">
-            <%= link_to admin_participations_path do %>
-              <%= hidden_field_tag :event_id, @event_id %>
+            <%= link_to admin_event_participations_path(@event.id) do %>
               <%= @event.participations.count %>名
             <% end %>
           </td>

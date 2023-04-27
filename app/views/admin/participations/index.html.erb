@@ -16,7 +16,7 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <% @participations.each do |participation| %>
+        <% @event.participations.reverse.each do |participation| %>
           <tbody>
             <tr>
               <td scope="row"><%= participation.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
@@ -40,11 +40,3 @@
     </div>
   </div>
 </div>
-
-
-
-  <!--<% @event.participation_users.each do |user| %>-->
-  <!--  <%= user.last_name %>-->
-  <!--<% end %>-->
-<!--イベント側でview作る？IDが渡せないので-->
-

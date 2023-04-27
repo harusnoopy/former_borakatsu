@@ -10,12 +10,12 @@
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class="table table-borderless">
+      <table class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">イベントID</th>
             <th scope="col">イベント名</th>
-            <th scope="col">日付</th>
+            <th scope="col">開催日</th>
             <th scope="col">応募人数</th>
             <th scope="col">募集ステータス</th>
           </tr>
@@ -31,7 +31,7 @@
               </td>
               <td><%= event.date.strftime('%Y/%m/%d') %></td>
               <td>
-                <%= link_to admin_participations_path do %>
+                <%= link_to admin_event_participations_path(event.id) do %>
                   <%= event.participations.count %>
                 <% end %>
                 </td>

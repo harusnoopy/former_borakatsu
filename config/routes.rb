@@ -18,10 +18,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :participations, only: [:index]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :events, except: [:destroy]
     resources :organizers, except: [:destroy]
+    resources :events, except: [:destroy] do
+      resources :participations, only: [:index]
+    end
   end
 
   devise_scope :user do
