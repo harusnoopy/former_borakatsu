@@ -35,18 +35,22 @@
                 <% end %>
               </td>
               <td>
-                <% if event.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to event_favorites_path(event.id), method: :delete do %>
-                      <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span>
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to event_favorites_path(event.id), method: :post do %>
-                      <span style="color: black"><i class="far fa-heart"></i> <%= event.favorites.count %></span>
-                    <% end %>
-                  </p>
+                <% if user_signed_in? %>
+                  <% if event.favorited_by?(current_user) %>
+                    <p>
+                      <%= link_to event_favorites_path(event.id), method: :delete do %>
+                        <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span>
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to event_favorites_path(event.id), method: :post do %>
+                        <span style="color: black"><i class="far fa-heart"></i> <%= event.favorites.count %></span>
+                      <% end %>
+                    </p>
+                  <% end %>
+                <% else %>
+                  <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span>
                 <% end %>
               </td>
             </tr>
