@@ -30,4 +30,4 @@ https://docs.google.com/spreadsheets/d/18Mj3h-jewsB8o_E4NY17U5M3cGM-ESk6NPprLN6H
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+- <div>Logo made by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo free logo creator</a></div>
