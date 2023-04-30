@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 2023_04_10_102014) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "organizers", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "telephone_number", null: false
+    t.string "email", null: false
+    t.string "homepage", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "participations", force: :cascade do |t|
     t.boolean "is_applying", default: false, null: false
     t.integer "user_id"
