@@ -31,7 +31,7 @@ Organizer.create!(
    address: '新潟県新潟市中央区0-0',
    telephone_number: '1234567890',
    email: 'niigatasyounenn@ie.com',
-   homepage: 'niigatasyounennnoie.ne.jp'
+   homepage: 'http://niigatasyounennnoie.ne.jp'
 )
 
 Event.create!(
