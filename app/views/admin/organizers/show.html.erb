@@ -16,7 +16,7 @@
             <td><%= @organizer.id %></td>
           </tr>
           <tr>
-            <td scope="row">詳細</td>
+            <td scope="row" class="d-flex align-items-stretch">詳細</td>
             <td><%=safe_join(@organizer.introduction.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
