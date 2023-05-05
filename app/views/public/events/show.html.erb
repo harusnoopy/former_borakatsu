@@ -21,7 +21,7 @@
           </td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">イベント詳細</td>
+          <td class="pt-3 pr-5 d-flex align-items-stretch">イベント詳細</td>
           <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@
           <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">スケジュール</td>
+          <td class="pt-3 pr-5 d-flex align-items-stretch">スケジュール</td>
           <td class="pt-3"><%=safe_join(@event.schedule.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>

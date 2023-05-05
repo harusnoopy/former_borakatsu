@@ -31,7 +31,7 @@
             </tr>
             <tr>
               <td><%= f.label :introduction, "概要" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここにイベント概要を記述します", size: "63×70" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここにイベント概要を記述します", cols: "63", rows: "7" %></td>
             </tr>
             <tr>
               <td><%= f.label :date, "日付" %></td>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
               <td><%= f.label :schedule, "スケジュール" %></td>
-              <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", size: "63" %></td>
+              <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", cols: "63", rows: "5" %></td>
             </tr>
             <tr>
               <td><%= f.label :number_of_people, "募集予定人数" %></td>
