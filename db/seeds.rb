@@ -19,8 +19,8 @@ User.create!(
       first_name_kana: 'タロウ',
       telephone_number: '00000000000',
       is_deleted: 'false',
-      email: 'aaa@gmail.com',
-      encrypted_password: '111111'
+      email: 'sample@gmail.com',
+      password: '111111'
    }
 )
 
