@@ -55,7 +55,7 @@
         <div class="form-inline">
           <p class="text-info font-weight-bold mt-3">応募済</p>
         </div>
-      <% else %>
+      <% elsif @event.is_recruiting == true %>
         <%= form_with model: @participation, url: confirm_path do |f| %>
           <div class="form-inline">
             <%= f.hidden_field :event_id, :value => @event.id %>

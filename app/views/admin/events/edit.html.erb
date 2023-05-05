@@ -45,6 +45,22 @@
               <td><%= f.label :number_of_people, "募集予定人数" %></td>
               <td><%= f.number_field :number_of_people, placeholder: "10", min: "1" %>人</td>
             </tr>
+            <tr>
+              <td><%= f.label :is_recruiting, "募集状況" %></td>
+              <td>
+                <% if @event.is_recruiting == true %>
+                  <%= f.radio_button :is_recruiting, true, checked: true %>
+                  <%= f.label :is_recruiting_true, "募集中" %>
+                  <%= f.radio_button :is_recruiting, false %>
+                  <%= f.label :is_recruiting_false, "締切" %>
+                <% else %>
+                  <%= f.radio_button :is_recruiting, true %>
+                  <%= f.label :is_recruiting_true, "募集中" %>
+                  <%= f.radio_button :is_recruiting, false, checked: true %>
+                  <%= f.label :is_recruiting_false, "締切" %>
+                <% end %>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
