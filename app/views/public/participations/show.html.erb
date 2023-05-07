@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <p id="notice"><%= notice %></p>
   </div>
-  
+
   <div class="row">
     <div class="col-md-9 offset-md-1">
       <p><span class="bg-light font-weight-bold px-3">応募イベント詳細</span></p>
@@ -12,46 +12,8 @@
   <div class="row">
     <div class="col offset-md-1">
       <table>
-        <tr>
-          <td class="pt-3 pr-5">イベント名</td>
-          <td class="pt-3"><%= @participation.event.name %></td>
-        </tr>
-        <tr>
-          <td class="pt-3 pr-5">主催者</td>
-          <td class="pt-3">
-            <%= link_to organizer_path(@participation.event.organizer.id) do %>
-              <%= @participation.event.organizer.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td class="pt-3 pr-5">イベント詳細</td>
-          <td class="pt-3"><%= safe_join(@participation.event.introduction.split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <td class="pt-3 pr-5">開催日</td>
-          <td class="pt-3"><%= @participation.event.date.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <td class="pt-3 pr-5">スケジュール</td>
-          <td class="pt-3"><%= safe_join(@participation.event.schedule.split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <td class="pt-3 pr-5">募集人数</td>
-          <td class="pt-3"><%= @participation.event.number_of_people %>名</td>
-        </tr>
-          <td class="pt-3 pr-5">募集ステータス</td>
-          <td class="pt-3">
-            <% if @participation.event.is_recruiting == true %>
-              <p class="text-success m-0"><strong>募集中</strong></p>
-            <% else %>
-              <p class="text-secondary m-0">締切</p>
-            <% end %>
-          </td>
-        </tr>
+        <%= render 'public/shared/event_detail', event: @participation.event %>
       </table>
     </div>
-  </div>
-  <div class="row justify-content-center">
   </div>
 </div>
