@@ -1,2 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+header {
+  background-color: #F7C099;
+}
+
+header .li {
+  text-color: #FBE0CC;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #FBE0CC;
+  outline: none;
+}
