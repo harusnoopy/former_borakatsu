@@ -9,6 +9,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -26,44 +27,44 @@
 
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "マイページ", user_path, class: 'nav-link border text-dark rounded px-2' %>
+                  <%= link_to "マイページ", user_path, class: 'nav-link px-2' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "イベント一覧", events_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "イベント一覧", events_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "いいね一覧", favorites_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "いいね一覧", favorites_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link px-2 ml-md-5' %>
                 </li>
 
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "イベント一覧",  admin_events_path, class: 'nav-link text-dark border rounded px-2' %>
+                  <%= link_to "イベント一覧",  admin_events_path, class: 'nav-link px-2' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "会員一覧", admin_users_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "主催者一覧", admin_organizers_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "主催者一覧", admin_organizers_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-linkd px-2 ml-md-5' %>
                 </li>
 
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "About", about_path, class: 'nav-link text-dark border rounded px-2' %>
+                  <%= link_to "About", about_path, class: 'nav-link px-2' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "イベント一覧", events_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "イベント一覧", events_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "新規登録", new_user_registration_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border rounded px-2 ml-md-5' %>
+                  <%= link_to "ログイン", new_user_session_path, class: 'nav-link px-2 ml-md-5' %>
                 </li>
               <% end %>
             </ul>

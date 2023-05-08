@@ -7,9 +7,9 @@
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class="table table-borderless">
+      <table class="table">
         <thead class="thead-light">
-          <tr>
+          <tr class="mb-3">
             <th scope="col">イベント名</th>
             <th scope="col">開催日</th>
             <th scope="col">主催者</th>
@@ -36,17 +36,13 @@
               </td>
               <td>
                 <% if favorite.event.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
-                      <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= favorite.event.favorites.count %></span>
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to event_favorites_path(favorite.event_id), method: :post do %>
-                      <span style="color: black"><i class="far fa-heart"></i> <%= favorites.count %></span>
-                    <% end %>
-                  </p>
+                  <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
+                    <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= favorite.event.favorites.count %></span>
+                  <% end %>
+                <% else %>
+                  <%= link_to event_favorites_path(favorite.event_id), method: :post do %>
+                    <span style="color: black"><i class="far fa-heart"></i> <%= favorites.count %></span>
+                  <% end %>
                 <% end %>
               </td>
             </tr>

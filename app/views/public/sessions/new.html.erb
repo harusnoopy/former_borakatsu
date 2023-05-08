@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">ログイン</span></p>
+      <p class="mt-3"><span class="bg-light font-weight-bold px-3">ログイン</span></p>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col offset-md-1">
       <p><small><span class="bg-light font-weight-bold px-3 ml-3">会員登録の方はこちらからログイン</span></small></p>
     </div>
   </div>
-    
+
   <div class="row justify-content-center">
     <p id="notice"><%= alert %></p>
   </div>
-  
+
   <div class="row">
     <div class="col offset-md-2">
       <%= form_with model: @user, url: user_session_path do |f| %>

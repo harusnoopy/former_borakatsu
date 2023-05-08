@@ -1,15 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: #FCE6D8;
+  color: #47A6A5;
+}
+
+h5 {
+  color: #F7C099;
+}
+
+.table {
+  color: #47A6A5;
+}
+
+a {
+  color: #47A6A5;
+}
+
+.color_pink {
+  color: #F2948D;
+}
+
 header {
   background-color: #F7C099;
 }
 
-header .li {
-  text-color: #FBE0CC;
+.navbar-dark .navbar-nav .nav-link {
+  color: #FFEADB;
+  font-weight: bold;
+  border: 1px solid #FBE0CC;
+  border-radius: 5px;
 }
 
 .navbar-dark .navbar-toggler {
   border-color: #FBE0CC;
   outline: none;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
 }
