@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <h5 class="my-4"><span class="font-weight-bold px-3">イベント一覧</span></h5>
+      <h5 class="mt-4 mx-5 mb-2">イベント一覧</h5>
     </div>
   </div>
 
@@ -17,6 +17,7 @@
             <th scope="col">いいね</th>
           </tr>
         </thead>
+
         <% @events.each do |event| %>
           <tbody>
             <tr>
@@ -38,15 +39,15 @@
                 <% if user_signed_in? %>
                   <% if event.favorited_by?(current_user) %>
                     <%= link_to event_favorites_path(event.id), method: :delete do %>
-                      <span><i class="fas fa-heart color_pink"></i></span> <span><%= event.favorites.count %></span>
+                      <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
                     <% end %>
                     <% else %>
                     <%= link_to event_favorites_path(event.id), method: :post do %>
-                      <span><i class="far fa-heart"></i> <%= event.favorites.count %></span>
+                      <i class="far fa-heart"></i> <%= event.favorites.count %>
                     <% end %>
                   <% end %>
                 <% else %>
-                  <span style="color: red"><i class="fas fa-heart"></i></span> <span><%= event.favorites.count %></span>
+                  <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
                 <% end %>
               </td>
             </tr>

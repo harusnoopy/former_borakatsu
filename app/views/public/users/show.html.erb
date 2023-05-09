@@ -1,15 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 offset-md-1">
-      <h5 class="my-4"><span class="bg-light font-weight-bold px-3">マイページ</span></h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-10 offset-md-2 d-flex align-items-start">
-      <h5 class="mb-3 mt-1 mr-4"><strong>登録情報</strong></h5>
+    <div class="col-md-10 offset-md-2 d-flex align-items-start mt-4">
+      <h4 class="mt-1 mr-4 mb-3"><strong>登録情報</strong></h4>
       <%= link_to "編集する", edit_user_path, class: "btn btn-success mb-3 px-4 py-1" %>
     </div>
+
     <div class="col-md-7 offset-md-2">
       <table class="table table-bordered">
         <tbody>
@@ -32,8 +27,9 @@
         </tbody>
       </table>
     </div>
+
     <div class="col-md-10 offset-md-2 d-flex align-items-start">
-      <h5 class="mb-3 mt-1 mr-4"><strong>応募履歴</strong></h5>
+      <h4 class="mb-3 mt-1 mr-4"><strong>応募履歴</strong></h4>
       <%= link_to "一覧を見る", participations_path, class: "btn btn-primary mb-3 px-4 py-1" %>
     </div>
   </div>

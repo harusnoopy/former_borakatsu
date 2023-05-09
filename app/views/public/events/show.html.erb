@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <h5 class="my-4"><span class="bg-light font-weight-bold px-3">イベント詳細</span></h5>
+      <h5 class="mt-4 mx-5 mb-2">イベント詳細</h5>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
       <table>
         <%= render 'public/shared/event_detail', event: @event %>
         <tr>
-          <td class="pt-3 pr-5">募集状況</td>
+          <th class="pt-3 pr-5">募集状況</th>
           <td class="pt-3">
             <% if @event.is_recruiting == true %>
               <p class="text-success m-0"><strong>募集中</strong></p>

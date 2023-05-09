@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <h5 class="my-4"><span class="bg-light font-weight-bold px-3">いいねしたイベント</span></h5>
+      <h5 class="mt-4 mx-5 mb-2">いいねしたイベント</h5>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class="table">
-        <thead class="thead-light">
+      <table class="table table-borderless">
+        <thead>
           <tr class="mb-3">
             <th scope="col">イベント名</th>
             <th scope="col">開催日</th>
@@ -17,6 +17,7 @@
             <th scope="col">いいね</th>
           </tr>
         </thead>
+        
         <% @favorites.each do |favorite| %>
           <tbody>
             <tr>
@@ -35,14 +36,8 @@
                 <% end %>
               </td>
               <td>
-                <% if favorite.event.favorited_by?(current_user) %>
-                  <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
-                    <span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= favorite.event.favorites.count %></span>
-                  <% end %>
-                <% else %>
-                  <%= link_to event_favorites_path(favorite.event_id), method: :post do %>
-                    <span style="color: black"><i class="far fa-heart"></i> <%= favorites.count %></span>
-                  <% end %>
+                <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
+                  <i class="fas fa-heart color_pink"></i> <%= favorite.event.favorites.count %>
                 <% end %>
               </td>
             </tr>

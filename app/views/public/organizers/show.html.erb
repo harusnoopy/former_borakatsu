@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <h5 class="my-4"><span class="bg-light font-weight-bold px-3"><%= @organizer.name %></span></h5>
+      <h5 class="mt-4 mx-5 mb-2"><%= @organizer.name %></h5>
     </div>
   </div>
 
@@ -10,27 +10,27 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td scope="row">詳細</td>
+            <th scope="row">紹介</th>
             <td><%=safe_join(@organizer.introduction.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
-            <td scope="row">郵便番号</td>
+            <th scope="row">郵便番号</th>
             <td><%= @organizer.postal_code %></td>
           </tr>
           <tr>
-            <td scope="row">住所</td>
+            <th scope="row">住所</th>
             <td><%= @organizer.address %></td>
           </tr>
           <tr>
-            <td scope="row">電話番号</td>
+            <th scope="row">電話番号</th>
             <td><%= @organizer.telephone_number %></td>
           </tr>
           <tr>
-            <td scope="row">メールアドレス</td>
+            <th scope="row">メールアドレス</th>
             <td><%= @organizer.email %></td>
           </tr>
           <tr>
-            <td scope="row">ホームページURL</td>
+            <th scope="row">ホームページURL</th>
             <td><%= link_to @organizer.homepage, @organizer.homepage %></td>
           </tr>
         </tbody>
