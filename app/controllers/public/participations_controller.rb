@@ -24,6 +24,13 @@ class Public::ParticipationsController < ApplicationController
   def show
     @participation = Participation.find(params[:id])
   end
+  
+  def cancel
+    participation = Participation.find_by(event_id: event_id, user_id: current_user.id)
+    participation.update(is_applying: false)
+    flash[:notice] = "応募をキャンセルしました"
+    redirect_to event_path(event.id)
+  end
 
   private
 

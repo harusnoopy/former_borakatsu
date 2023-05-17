@@ -22,13 +22,15 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row justify-content-center">
     <% if user_signed_in? %>
       <% if @event.participation_users.exists?(id: current_user.id) %>
         <div class="form-inline">
           <p class="text-info font-weight-bold mt-3">応募済</p>
         </div>
+        <%= hidden_field_tag :event_id, @event.id %>
+        <%= link_to "応募をキャンセルする",  cancel_path, method: :patch, class: "btn btn-danger my-3 ml-5 px-4", data: {confirm: "キャンセルしてもよろしいですか？"} %>
       <% elsif @event.is_recruiting == true %>
         <%= form_with model: @participation, url: confirm_path do |f| %>
           <div class="form-inline">
