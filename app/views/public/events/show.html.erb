@@ -1,7 +1,12 @@
 <div class="container">
+
+  <div class="row justify-content-center mt-2">
+    <p id="notice"><strong><%= notice %></strong></p>
+  </div>
+
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <h5 class="mt-4 mx-5 mb-2">イベント詳細</h5>
+      <h5 class="mx-5 mb-2">イベント詳細</h5>
     </div>
   </div>
 
@@ -29,8 +34,12 @@
         <div class="form-inline">
           <p class="text-info font-weight-bold mt-3">応募済</p>
         </div>
-        <%= hidden_field_tag :event_id, @event.id %>
-        <%= link_to "応募をキャンセルする",  cancel_path, method: :patch, class: "btn btn-danger my-3 ml-5 px-4", data: {confirm: "キャンセルしてもよろしいですか？"} %>
+        <%= form_with model: @participation, url: participation_path, method: :patch do |f| %>
+          <div class="form-inline">
+            <%= f.hidden_field :event_id, :value => @event.id %>
+            <%= f.submit "応募をキャンセルする", class: "btn btn-danger px-3 mx-3", data: {confirm: "キャンセルしてもよろしいですか？"} %>
+          </div>
+        <% end %>
       <% elsif @event.is_recruiting == true %>
         <%= form_with model: @participation, url: confirm_path do |f| %>
           <div class="form-inline">

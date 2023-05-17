@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'about' => 'homes#about'
     resources :organizers, only: [:show]
-    resources :participations, only: [:create, :index, :show]
+    resources :participations, only: [:create, :index, :show, :update]
     post 'participations/confirm' => 'participations#confirm', as: 'confirm'
-    patch 'participations/cancel' => 'participations#cancel', as: 'cancel'
     resource :user, only: [:show, :edit, :update]
     get 'user/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'user/withdrawal' => 'users#withdrawal', as: 'withdrawal'
