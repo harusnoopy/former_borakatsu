@@ -27,7 +27,7 @@
               <td><%= participation.event.date.strftime('%Y/%m/%d') %></td>
               <td><%= participation.event.organizer.name %></td>
               <td>
-                <% if participation.is_applying == false %>
+                <% if participation.is_applying == true %>
                   <p class="text-info m-0"><strong>応募済</strong></p>
                 <% else %>
                   <p class="text-secondary m-0">キャンセル</p>

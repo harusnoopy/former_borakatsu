@@ -30,16 +30,17 @@
 
   <div class="row justify-content-center">
     <% if user_signed_in? %>
-      <% if @event.participation_users.exists?(id: current_user.id) %>
-        <div class="form-inline">
-          <p class="text-info font-weight-bold mt-3">応募済</p>
-        </div>
+      <% if @event_participation.is_applying == true %>
         <%= form_with model: @participation, url: participation_path, method: :patch do |f| %>
           <div class="form-inline">
             <%= f.hidden_field :event_id, :value => @event.id %>
             <%= f.submit "応募をキャンセルする", class: "btn btn-danger px-3 mx-3", data: {confirm: "キャンセルしてもよろしいですか？"} %>
           </div>
         <% end %>
+      <% elsif @event_participation.is_applying == false %>
+        <div class="form-inline">
+          <p class="text-info font-weight-bold mt-3">キャンセル済</p>
+        </div>
       <% elsif @event.is_recruiting == true %>
         <%= form_with model: @participation, url: confirm_path do |f| %>
           <div class="form-inline">
