@@ -15,12 +15,24 @@ h5 {
   color: #47A6A5;
 }
 
+.table thead th {
+  font-size: 1.1em;
+}
+
 a {
   color: #47A6A5;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
 .color_pink {
   color: #F99891;
+}
+
+.container_top {
+  background-color: #F7C099;
 }
 
 header {
@@ -37,8 +49,4 @@ header {
 .navbar-dark .navbar-toggler {
   border-color: #FBE0CC;
   outline: none;
-}
-
-a:-webkit-any-link {
-  text-decoration: none;
 }
