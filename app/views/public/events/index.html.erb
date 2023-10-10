@@ -35,17 +35,9 @@
                   <p class="text-secondary m-0">締切</p>
                 <% end %>
               </td>
-              <td>
+              <td id="favorite_buttons_<%= event.id %>">
                 <% if user_signed_in? %>
-                  <% if event.favorited_by?(current_user) %>
-                    <%= link_to event_favorites_path(event.id), method: :delete do %>
-                      <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
-                    <% end %>
-                    <% else %>
-                    <%= link_to event_favorites_path(event.id), method: :post do %>
-                      <i class="far fa-heart"></i> <%= event.favorites.count %>
-                    <% end %>
-                  <% end %>
+                  <%= render "public/shared/favorites", event: event %>
                 <% else %>
                   <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
                 <% end %>
