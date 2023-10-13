@@ -4,6 +4,10 @@
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #47A6A5;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 90px;
+  box-sizing: border-box;
 }
 
 h5 {
@@ -49,4 +53,15 @@ header {
 .navbar-dark .navbar-toggler {
   border-color: #FBE0CC;
   outline: none;
+}
+
+footer {
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  line-height: 90px;
+  color: #FFEADB;
+  background-color: #F7C099;
+  position: absolute;
+  bottom: 0;
 }

@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-3">
     <% if user_signed_in? %>
       <% if @event.is_recruiting == true && @event_participation == nil %>
         <%= form_with model: @participation, url: confirm_path do |f| %>
