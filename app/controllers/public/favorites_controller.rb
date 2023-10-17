@@ -11,6 +11,7 @@ class Public::FavoritesController < ApplicationController
     @event = Event.find(params[:event_id])
     favorite = Favorite.find_by(user_id: current_user.id, event_id: params[:event_id])
     favorite.destroy
+    redirect_to request.referer
   end
 
   def index
