@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">イベント新規登録</span></p>
+    <div class="col-md-9 offset-md-1">
+      <h5 class="mt-4 mx-5 mb-2">イベント新規登録</h5>
     </div>
   </div>
 
@@ -19,35 +19,33 @@
   </div>
 
   <%= form_with model: @event, url: admin_events_path do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+    <div class="row">
+      <div class="col-10 offset-md-1">
         <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td><%= f.label :organizer_id, "主催者" %></td>
-              <td><%= f.collection_select :organizer_id, Organizer.all, :id, :name %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :name, "イベント名" %></td>
-              <td><%= f.text_field :name, autocomplete: "name", placeholder: "イベント名", size: "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :introduction, "概要" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここにイベント概要を記述します", cols: "63", rows: "7" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :date, "日付" %></td>
-              <td><%= f.date_field :date %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :schedule, "スケジュール" %></td>
-              <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", cols: "63", rows: "5" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :number_of_people, "募集予定人数" %></td>
-              <td><%= f.number_field :number_of_people, placeholder: "10", min: "1" %>人</td>
-            </tr>
-          </tbody>
+          <tr>
+            <th class="col-md-3 col-sm-4"><%= f.label :organizer_id, "主催者" %></th>
+            <td><%= f.collection_select :organizer_id, Organizer.all, :id, :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "イベント名" %></th>
+            <td><%= f.text_field :name, autocomplete: "name", placeholder: "イベント名", style: "width:100%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :introduction, "概要" %></th>
+            <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここにイベント概要を記述します", style: "width:100%", rows: "7" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :date, "日付" %></th>
+            <td><%= f.date_field :date %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :schedule, "スケジュール" %></th>
+            <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", style: "width:100%", rows: "5" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :number_of_people, "募集予定人数" %></th>
+            <td><%= f.number_field :number_of_people, placeholder: "10", min: "1" %>人</td>
+          </tr>
         </table>
       </div>
     </div>

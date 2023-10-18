@@ -1,40 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">会員一覧</span></p>
+      <h5 class="mt-4 mx-5 mb-2">会員一覧</h5>
     </div>
   </div>
-
+  
   <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">ステータス</th>
-          </tr>
-        </thead>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-borderless">
+        <tr>
+          <th>No.</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
         <% @users.each do |user| %>
-          <tbody>
-            <tr>
-              <td scope="row"><%= user.id %></td>
-              <td>
-                <%= link_to admin_user_path(user.id) do %>
-                  <%= user.last_name %> <%= user.first_name %>
-                <% end %>
-              </td>
-              <td><%= user.email %></td>
-              <td>
-                <% if user.is_deleted == false %>
-                  <p class="text-success m-0"><strong>有効</strong></p>
-                <% else %>
-                  <p class="text-secondary m-0">退会</p>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to admin_user_path(user.id) do %>
+                <%= user.last_name %> <%= user.first_name %>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted == false %>
+                <p class="text-success m-0"><strong>有効</strong></p>
+              <% else %>
+                <p class="text-secondary m-0">退会</p>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>

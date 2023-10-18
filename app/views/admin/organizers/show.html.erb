@@ -1,49 +1,45 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><h5><span class="font-weight-bold pl-5">
-        <%= @organizer.name %>
-      </span></h5></p>
+      <h5 class="mt-4 mx-5 mb-2"><%= @organizer.name %></h5>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-9 offset-md-1">
+    <div class="col-md-10 offset-md-1">
       <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <td scope="row" class="col-md-3 col-sm-4">主催者ID</td>
-            <td><%= @organizer.id %></td>
-          </tr>
-          <tr>
-            <td scope="row" class="d-flex align-items-stretch">詳細</td>
-            <td><%=safe_join(@organizer.introduction.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <td scope="row">郵便番号</td>
-            <td><%= @organizer.postal_code %></td>
-          </tr>
-          <tr>
-            <td scope="row">住所</td>
-            <td><%= @organizer.address %></td>
-          </tr>
-          <tr>
-            <td scope="row">電話番号</td>
-            <td><%= @organizer.telephone_number %></td>
-          </tr>
-          <tr>
-            <td scope="row">メールアドレス</td>
-            <td><%= @organizer.email %></td>
-          </tr>
-          <tr>
-            <td scope="row">ホームページURL</td>
-            <td><%= link_to @organizer.homepage, @organizer.homepage %></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th class="col-md-3 col-sm-4">主催者No.</th>
+          <td><%= @organizer.id %></td>
+        </tr>
+        <tr>
+          <th class="d-flex align-items-stretch">詳細</th>
+          <td><%=safe_join(@organizer.introduction.split("\n"),tag(:br))%></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @organizer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @organizer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @organizer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @organizer.email %></td>
+        </tr>
+        <tr>
+          <th>ホームページURL</th>
+          <td><%= link_to @organizer.homepage, @organizer.homepage %></td>
+        </tr>
       </table>
-      <div class="col row justify-content-center">
-        <%= link_to "編集する", edit_admin_organizer_path(@organizer.id), class: "btn btn-success my-3 px-4" %>
-      </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集する", edit_admin_organizer_path(@organizer.id), class: "btn btn-success my-3 px-5" %>
   </div>
 </div>

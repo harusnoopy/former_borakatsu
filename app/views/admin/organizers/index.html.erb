@@ -1,37 +1,33 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 offset-md-1 d-flex justify-content-between">
-      <p><span class="bg-light font-weight-bold px-3">主催者一覧</span></p>
+    <div class="col-md-9 offset-md-1 d-flex justify-content-between mt-4 mb-2">
+      <h5 class="mx-5">主催者一覧</h5>
       <%= button_to new_admin_organizer_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
-        <i class="fas fa-plus"></i>
+        <span style="color: #F99891"><i class="fas fa-plus"></i></span>
       <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">主催者名</th>
-            <th scope="col">電話番号</th>
-            <th scope="col">住所</th>
-          </tr>
-        </thead>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-borderless">
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">主催者名</th>
+          <th scope="col">電話番号</th>
+          <th scope="col">住所</th>
+        </tr>
         <% @organizers.each do |organizer| %>
-          <tbody>
-            <tr>
-              <td scope="row"><%= organizer.id %></td>
-              <td>
-                <%= link_to admin_organizer_path(organizer.id) do %>
-                  <%= organizer.name %>
-                <% end %>
-              </td>
-              <td><%= organizer.telephone_number %></td>
-              <td><%= organizer.address %></td>
-            </tr>
-          </tbody>
+          <tr>
+            <td scope="row"><%= organizer.id %></td>
+            <td>
+              <%= link_to admin_organizer_path(organizer.id) do %>
+                <%= organizer.name %>
+              <% end %>
+            </td>
+            <td><%= organizer.telephone_number %></td>
+            <td><%= organizer.address %></td>
+          </tr>
         <% end %>
       </table>
     </div>

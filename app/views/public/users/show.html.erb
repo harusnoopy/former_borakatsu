@@ -11,24 +11,22 @@
 
     <div class="col-md-7 offset-md-2">
       <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <th scope="row" class="table-active col-md-3 col-sm-4">氏名</th>
-            <td><%= @user.last_name %>　<%= @user.first_name %></td>
-          </tr>
-          <tr>
-            <th class="table-active">カナ</th>
-            <td><%= @user.last_name_kana %>　<%= @user.first_name_kana %></td>
-          </tr>
-          <tr>
-            <th class="table-active">電話番号</th>
-            <td><%= @user.telephone_number %></td>
-          </tr>
-          <tr>
-            <th class="table-active pr-2">メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th class="table-active col-4">氏名</th>
+          <td><%= @user.last_name %>　<%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">カナ</th>
+          <td><%= @user.last_name_kana %>　<%= @user.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th class="table-active">電話番号</th>
+          <td><%= @user.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class="table-active pr-2">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
       </table>
     </div>
 

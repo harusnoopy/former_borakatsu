@@ -1,40 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">応募者一覧</span></p>
+      <h5 class="mt-4 mx-5 mb-2">応募者一覧</h5>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">応募日時</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">応募状況</th>
-          </tr>
-        </thead>
+      <table class="table table-borderless">
+        <tr>
+          <th>応募日時</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>応募状況</th>
+        </tr>
         <% @event.participations.reverse.each do |participation| %>
-          <tbody>
-            <tr>
-              <td scope="row"><%= participation.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-              <td>
-                <%= link_to admin_user_path(participation.user.id) do %>
-                  <%= participation.user.last_name %> <%= participation.user.first_name %>
-                <% end %>
-              </td>
-              <td><%= participation.user.email %></td>
-              <td>
-                <% if participation.is_applying == false %>
-                  <p class="text-success m-0"><strong>応募中</strong></p>
-                <% else %>
-                  <p class="text-secondary m-0">キャンセル</p>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td><%= participation.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <td>
+              <%= link_to admin_user_path(participation.user.id) do %>
+                <%= participation.user.last_name %> <%= participation.user.first_name %>
+              <% end %>
+            </td>
+            <td><%= participation.user.email %></td>
+            <td>
+              <% if participation.is_applying == false %>
+                <p class="text-success m-0"><strong>応募中</strong></p>
+              <% else %>
+                <p class="text-secondary m-0">キャンセル</p>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>

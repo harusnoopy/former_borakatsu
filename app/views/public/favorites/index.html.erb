@@ -8,40 +8,36 @@
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <table class="table table-borderless">
-        <thead>
-          <tr class="mb-3">
-            <th scope="col">イベント名</th>
-            <th scope="col">開催日</th>
-            <th scope="col">主催者</th>
-            <th scope="col">募集状況</th>
-            <th scope="col">いいね</th>
-          </tr>
-        </thead>
-        
+        <tr class="mb-3">
+          <th scope="col">イベント名</th>
+          <th scope="col">開催日</th>
+          <th scope="col">主催者</th>
+          <th scope="col">募集状況</th>
+          <th scope="col">いいね</th>
+        </tr>
+
         <% @favorites.each do |favorite| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to event_path(favorite.event_id) do %>
-                  <%= favorite.event.name %>
-                <% end %>
-              </td>
-              <td><%= favorite.event.date.strftime('%Y/%m/%d') %></td>
-              <td><%= favorite.event.organizer.name %></td>
-              <td>
-                <% if favorite.event.is_recruiting == true %>
-                  <p class="text-success m-0"><strong>募集中</strong></p>
-                <% else %>
-                  <p class="text-secondary m-0">締切</p>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
-                  <i class="fas fa-heart color_pink"></i> <%= favorite.event.favorites.count %>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td>
+              <%= link_to event_path(favorite.event_id) do %>
+                <%= favorite.event.name %>
+              <% end %>
+            </td>
+            <td><%= favorite.event.date.strftime('%Y/%m/%d') %></td>
+            <td><%= favorite.event.organizer.name %></td>
+            <td>
+              <% if favorite.event.is_recruiting == true %>
+                <p class="text-success m-0"><strong>募集中</strong></p>
+              <% else %>
+                <p class="text-secondary m-0">締切</p>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to event_favorites_path(favorite.event_id), method: :delete do %>
+                <i class="fas fa-heart color_pink"></i> <%= favorite.event.favorites.count %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>

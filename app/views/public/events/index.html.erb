@@ -8,42 +8,38 @@
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">イベント名</th>
-            <th scope="col">日付</th>
-            <th scope="col">主催者</th>
-            <th scope="col">募集状況</th>
-            <th scope="col">いいね</th>
-          </tr>
-        </thead>
+        <tr>
+          <th scope="col">イベント名</th>
+          <th scope="col">日付</th>
+          <th scope="col">主催者</th>
+          <th scope="col">募集状況</th>
+          <th scope="col">いいね</th>
+        </tr>
 
         <% @events.each do |event| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to event_path(event.id) do %>
-                  <%= event.name %>
-                <% end %>
-              </td>
-              <td><%= event.date.strftime('%Y/%m/%d') %></td>
-              <td><%= event.organizer.name %></td>
-              <td>
-                <% if event.is_recruiting == true %>
-                  <p class="text-success m-0"><strong>募集中</strong></p>
-                <% else %>
-                  <p class="text-secondary m-0">締切</p>
-                <% end %>
-              </td>
-              <td id="favorite_buttons_<%= event.id %>">
-                <% if user_signed_in? %>
-                  <%= render "public/shared/favorites", event: event %>
-                <% else %>
-                  <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td>
+              <%= link_to event_path(event.id) do %>
+                <%= event.name %>
+              <% end %>
+            </td>
+            <td><%= event.date.strftime('%Y/%m/%d') %></td>
+            <td><%= event.organizer.name %></td>
+            <td>
+              <% if event.is_recruiting == true %>
+                <p class="text-success m-0"><strong>募集中</strong></p>
+              <% else %>
+                <p class="text-secondary m-0">締切</p>
+              <% end %>
+            </td>
+            <td id="favorite_buttons_<%= event.id %>">
+              <% if user_signed_in? %>
+                <%= render "public/shared/favorites", event: event %>
+              <% else %>
+                <i class="fas fa-heart color_pink"></i> <%= event.favorites.count %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>

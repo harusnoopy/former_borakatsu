@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">イベント詳細</span></p>
+      <h5 class="mt-4 mx-5 mb-2">イベント詳細</h5>
     </div>
   </div>
 
@@ -9,11 +9,11 @@
     <div class="col offset-md-1">
       <table>
         <tr>
-          <td class="pt-3 pr-5">イベント名</td>
+          <th class="pt-3 pr-5">イベント名</th>
           <td class="pt-3"><%= @event.name %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">主催者</td>
+          <th class="pt-3 pr-5">主催者</th>
           <td class="pt-3">
             <%= link_to admin_organizer_path(@event.organizer.id) do %>
               <%= @event.organizer.name %>
@@ -21,23 +21,23 @@
           </td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5 d-flex align-items-stretch">イベント詳細</td>
+          <th class="pt-3 pr-5 d-flex align-items-stretch">イベント詳細</th>
           <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br))%></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">開催日</td>
+          <th class="pt-3 pr-5">開催日</th>
           <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5 d-flex align-items-stretch">スケジュール</td>
+          <th class="pt-3 pr-5 d-flex align-items-stretch">スケジュール</th>
           <td class="pt-3"><%=safe_join(@event.schedule.split("\n"),tag(:br))%></td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">募集人数</td>
+          <th class="pt-3 pr-5">募集人数</th>
           <td class="pt-3"><%= @event.number_of_people %>名</td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">応募人数</td>
+          <th class="pt-3 pr-5">応募人数</th>
           <td class="pt-3">
             <%= link_to admin_event_participations_path(@event.id) do %>
               <%= @event.participations.count %>名
@@ -45,7 +45,7 @@
           </td>
         </tr>
         <tr>
-          <td class="pt-3 pr-5">募集状況</td>
+          <th class="pt-3 pr-5">募集状況</th>
           <td class="pt-3">
             <% if @event.is_recruiting == true %>
               <p class="text-success m-0"><strong>募集中</strong></p>

@@ -1,51 +1,47 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 d-flex justify-content-between">
-      <p><span class="bg-light font-weight-bold px-3">イベント一覧</span></p>
+    <div class="col-md-9 offset-md-1 d-flex justify-content-between mt-4 mb-2">
+      <h5 class="mx-5">イベント一覧</h5>
       <%= button_to new_admin_event_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
-        <i class="fas fa-plus"></i>
+        <span style="color: #F99891"><i class="fas fa-plus"></i></span>
       <% end %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">イベント名</th>
-            <th scope="col">開催日</th>
-            <th scope="col">応募人数</th>
-            <th scope="col">募集状況</th>
-            <th scope="col">いいね</th>
-          </tr>
-        </thead>
+      <table class="table table-borderless">
+        <tr>
+          <th>No.</th>
+          <th>イベント名</th>
+          <th>開催日</th>
+          <th>応募人数</th>
+          <th>募集状況</th>
+          <th>いいね</th>
+        </tr>
         <% @events.each do |event| %>
-          <tbody>
-            <tr>
-              <td scope="row"><%= event.id %></td>
-              <td>
-                <%= link_to admin_event_path(event.id) do %>
-                  <%= event.name %>
-                <% end %>
+          <tr>
+            <td scope="row"><%= event.id %></td>
+            <td>
+              <%= link_to admin_event_path(event.id) do %>
+                <%= event.name %>
+              <% end %>
+            </td>
+            <td><%= event.date.strftime('%Y/%m/%d') %></td>
+            <td>
+              <%= link_to admin_event_participations_path(event.id) do %>
+                <%= event.participations.count %> 名
+              <% end %>
               </td>
-              <td><%= event.date.strftime('%Y/%m/%d') %></td>
-              <td>
-                <%= link_to admin_event_participations_path(event.id) do %>
-                  <%= event.participations.count %> 名
-                <% end %>
-                </td>
-              <td>
-                <% if event.is_recruiting == true %>
-                  <p class="text-success m-0"><strong>募集中</strong></p>
-                <% else %>
-                  <p class="text-secondary m-0">締切</p>
-                <% end %>
-              </td>
-              <td><span style="color: red"><i class="fas fa-heart"></i></span> <span style="color: black"><%= event.favorites.count %></span></td>
-            </tr>
-          </tbody>
+            <td>
+              <% if event.is_recruiting == true %>
+                <p class="text-success m-0"><strong>募集中</strong></p>
+              <% else %>
+                <p class="text-secondary m-0">締切</p>
+              <% end %>
+            </td>
+            <td><i class="fas fa-heart color_pink"></i> <%= event.favorites.count %></td>
+          </tr>
         <% end %>
       </table>
     </div>

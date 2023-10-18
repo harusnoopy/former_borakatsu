@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">主催者新規登録</span></p>
+    <div class="col-md-9 offset-md-1">
+      <h5 class="mt-4 mx-5 mb-2">主催者新規登録</h5>
     </div>
   </div>
 
@@ -19,39 +19,37 @@
   </div>
 
   <%= form_with model: @organizer, url: admin_organizers_path do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+    <div class="row">
+      <div class="col-10 offset-md-1">
         <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td><%= f.label :name, "主催者名" %></td>
-              <td><%= f.text_field :name, autocomplete: "name", placeholder: "主催者名", size: "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :introduction, "概要" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに概要を記述します", cols: "63", rows: "5" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :postal_code, "郵便番号" %></td>
-              <td><%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", size: "20" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :address, "住所" %></td>
-              <td><%= f.text_field :address, autocomplete: "address", placeholder: "新潟県新潟市中央区0-0", size: "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :telephone_number, "電話番号" %></td>
-              <td><%= f.telephone_field :telephone_number, autocomplete: "telephone_number", placeholder: "00000000000", size: "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :email, "メールアドレス" %></td>
-              <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@examle.com", size: "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :homepage, "ホームページ" %></td>
-              <td><%= f.url_field :homepage, autocomplete: "homepage", placeholder: "http://aaaaa.ne.jp", size: "60" %></td>
-            </tr>
-          </tbody>
+          <tr>
+            <th class="col-3"><%= f.label :name, "主催者名" %></th>
+            <td><%= f.text_field :name, autocomplete: "name", placeholder: "主催者名", style: "width:100%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :introduction, "概要" %></th>
+            <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに概要を記述します", style: "width:100%", rows: "5" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :postal_code, "郵便番号" %></th>
+            <td><%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000", style: "width:40%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, "住所" %></th>
+            <td><%= f.text_field :address, autocomplete: "address", placeholder: "新潟県新潟市中央区0-0", style: "width:100%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :telephone_number, "電話番号" %></th>
+            <td><%= f.telephone_field :telephone_number, autocomplete: "telephone_number", placeholder: "00000000000", style: "width:100%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@examle.com", style: "width:100%" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :homepage, "ホームページ" %></th>
+            <td><%= f.url_field :homepage, autocomplete: "homepage", placeholder: "http://aaaaa.ne.jp", style: "width:100%" %></td>
+          </tr>
         </table>
       </div>
     </div>
