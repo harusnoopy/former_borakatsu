@@ -56,6 +56,7 @@ Event.find_or_create_by!(name: '森林探検でお宝探し！') do |event|
                          小学生5,6名とボランティア2名でグループとなり、施設内を探索していただきます。
                          ボランティアの方々には小学生の参加者のサポートをしていただきます。'
    event.date = '2023/12/27'
+   event.place = '新潟少年の家'
    event.schedule = '11時　集合'
    event.number_of_people = '8'
    event.is_recruiting = 'true'
@@ -67,6 +68,7 @@ Event.find_or_create_by!(name: '手作りピザ体験') do |event|
                          ピザは生地から作成し、自由に具材を乗せて焼成します。
                          小学生4名とボランティア2名で1グループとなり活動します。'
    event.date = '2024/03/25'
+   event.place = '長岡森林キャンプ場'
    event.schedule = '10時　集合
                      10時30分　ピザ釜作り
                      11時　ピザ作り
