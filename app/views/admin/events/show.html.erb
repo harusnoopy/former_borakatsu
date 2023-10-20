@@ -8,34 +8,7 @@
   <div class="row">
     <div class="col offset-md-1">
       <table>
-        <tr>
-          <th class="pt-3 pr-5">イベント名</th>
-          <td class="pt-3"><%= @event.name %></td>
-        </tr>
-        <tr>
-          <th class="pt-3 pr-5">主催者</th>
-          <td class="pt-3">
-            <%= link_to admin_organizer_path(@event.organizer.id) do %>
-              <%= @event.organizer.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th class="pt-3 pr-5 d-flex align-items-stretch">イベント詳細</th>
-          <td class="pt-3"><%=safe_join(@event.introduction.split("\n"),tag(:br))%></td>
-        </tr>
-        <tr>
-          <th class="pt-3 pr-5">開催日</th>
-          <td class="pt-3"><%= @event.date.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <th class="pt-3 pr-5 d-flex align-items-stretch">スケジュール</th>
-          <td class="pt-3"><%=safe_join(@event.schedule.split("\n"),tag(:br))%></td>
-        </tr>
-        <tr>
-          <th class="pt-3 pr-5">募集人数</th>
-          <td class="pt-3"><%= @event.number_of_people %>名</td>
-        </tr>
+        <%= render 'public/shared/event_detail', event: @event %>
         <tr>
           <th class="pt-3 pr-5">応募人数</th>
           <td class="pt-3">

@@ -39,6 +39,10 @@
             <td><%= f.date_field :date %></td>
           </tr>
           <tr>
+            <th><%= f.label :place, "場所" %></th>
+            <td><%= f.text_field :place %></td>
+          </tr>
+          <tr>
             <th><%= f.label :schedule, "スケジュール" %></th>
             <td><%= f.text_area :schedule, autocomplete: "schedule", placeholder: "30日11:00　集合", style: "width:100%", rows: "5" %></td>
           </tr>
