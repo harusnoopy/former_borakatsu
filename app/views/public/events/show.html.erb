@@ -27,7 +27,7 @@
         <tr>
       </table>
       <div class="pt-3 pr-5">
-        <%= image_tag @event.get_image(250,250) %>
+        <%= image_tag @event.get_image.variant(resize: "250x200^", gravity: "center", crop: "250x200+0+0").processed %>
       </div>
     </div>
   </div>
