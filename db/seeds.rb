@@ -61,6 +61,7 @@ Event.find_or_create_by!(name: '森林探検でお宝探し！') do |event|
    event.number_of_people = '8'
    event.is_recruiting = 'true'
    event.organizer_id = '1'
+   event.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/forest.jpg"), filename:"forest.jpg")
 end
 
 Event.find_or_create_by!(name: '手作りピザ体験') do |event|
@@ -77,4 +78,5 @@ Event.find_or_create_by!(name: '手作りピザ体験') do |event|
    event.number_of_people = '10'
    event.is_recruiting = 'true'
    event.organizer_id = '2'
+   event.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/pizza.jpg"), filename:"pizza.jpg")
 end

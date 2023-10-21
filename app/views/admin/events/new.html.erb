@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <th><%= f.label :place, "場所" %></th>
-            <td><%= f.text_field :place %></td>
+            <td><%= f.text_field :place, placeholder: "開催地", style: "width:100%" %></td>
           </tr>
           <tr>
             <th><%= f.label :schedule, "スケジュール" %></th>
@@ -49,6 +49,10 @@
           <tr>
             <th><%= f.label :number_of_people, "募集予定人数" %></th>
             <td><%= f.number_field :number_of_people, placeholder: "10", min: "1" %>人</td>
+          </tr>
+          <tr>
+            <th><%= f.label :image, "画像" %></th>
+            <td><%= f.file_field :image, accept: "image/*" %><br>※任意</td>
           </tr>
         </table>
       </div>

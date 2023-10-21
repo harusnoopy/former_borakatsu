@@ -66,6 +66,11 @@
               <% end %>
             </td>
           </tr>
+          <tr>
+            <th><%= f.label :image, "画像" %></th>
+            <td><%= f.file_field :image, accept: "image/*" %><br>※任意</td>
+          </tr>
+
         </table>
       </div>
     </div>
