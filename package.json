@@ -1,5 +1,5 @@
 {
-  "name": "borakatu",
+  "name": "borakatsu",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "6.4.0",
@@ -23,5 +23,24 @@
     "style-loader": "^3.3.3",
     "webpack": "^4.47.0",
     "webpack-dev-server": "^3"
-  }
+  },
+  "description": "## サイト概要 ### サイトテーマ 募集中のボランティアの閲覧、応募ができるボランティアの人材募集サイトです。",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harusnoopy/borakatsu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harusnoopy/borakatsu/issues"
+  },
+  "homepage": "https://github.com/harusnoopy/borakatsu#readme"
 }
